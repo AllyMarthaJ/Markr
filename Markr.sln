@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markr", "Markr\Markr.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markr.Tests", "Markr.Tests\Markr.Tests.csproj", "{AA0F0245-CFF6-492C-9BAD-C46B5EE4AE9D}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{803CA69D-656D-465D-9BFA-719CD2930CBB}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{90F9D536-7834-4F31-9A06-BB9EA9A1E59D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AA0F0245-CFF6-492C-9BAD-C46B5EE4AE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0F0245-CFF6-492C-9BAD-C46B5EE4AE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA0F0245-CFF6-492C-9BAD-C46B5EE4AE9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{803CA69D-656D-465D-9BFA-719CD2930CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{803CA69D-656D-465D-9BFA-719CD2930CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{803CA69D-656D-465D-9BFA-719CD2930CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{803CA69D-656D-465D-9BFA-719CD2930CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F9D536-7834-4F31-9A06-BB9EA9A1E59D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F9D536-7834-4F31-9A06-BB9EA9A1E59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F9D536-7834-4F31-9A06-BB9EA9A1E59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F9D536-7834-4F31-9A06-BB9EA9A1E59D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
