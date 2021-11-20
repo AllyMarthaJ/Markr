@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace Markr.DataHandling.Data {
@@ -28,7 +29,18 @@ namespace Markr.DataHandling.Data {
         [XmlText]
         public string Text { get; set; }
 
-        public McqResultDb ToDatabaseData() {
+        internal McqResultDb ToDatabaseData() {
+            if (String.IsNullOrEmpty(FirstName) ||
+                String.IsNullOrEmpty(LastName) ||
+                String.IsNullOrEmpty(StudentNumber) ||
+                TestId == -1 ||
+                SummaryMarks.Available == -1 ||
+                SummaryMarks.Obtained == -1 ||
+                ScannedOn == default(DateTime)) {
+
+                throw new FormatException("One or more of the fields were malformed.");
+            }
+
             return new McqResultDb() {
                 FirstName = FirstName,
                 LastName = LastName,

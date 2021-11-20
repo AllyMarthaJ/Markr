@@ -32,7 +32,7 @@ namespace Markr {
             });
             services.AddControllers(options => {
                 options.InputFormatters.Add(markrInputFormatter);
-            });
+            }).AddXmlSerializerFormatters();
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Markr", Version = "v1" });
             });

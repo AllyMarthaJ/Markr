@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,11 @@ namespace Markr.DataHandling.Data {
 	public class SummaryMarks {
 
 		[XmlAttribute(AttributeName = "available")]
+		[DefaultValue(-1)]
 		public int Available { get; set; }
 
 		[XmlAttribute(AttributeName = "obtained")]
+		[DefaultValue(-1)]
 		public int Obtained { get; set; }
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Markr.DataHandling.Data;
+using Markr.DataHandling.Storage;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,20 +13,38 @@ using System.Xml.Serialization;
 namespace Markr.Controllers {
     [Route("[controller]")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public class ImportController : ControllerBase {
-        private readonly ILogger<ImportController> logger;
+        private readonly StorageContext context;
 
-        public ImportController(ILogger<ImportController> logger) {
-            this.logger = logger;
+        public ImportController(StorageContext context) {
+            this.context = context;
         }
 
         [HttpPost]
-        public ActionResult PostImportData(McqTestResults result) {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(McqTestResults));
-            using (StringWriter textWriter = new StringWriter()) {
-                xmlSerializer.Serialize(textWriter, result);
-                return Ok(textWriter.ToString());
+        public async Task<ActionResult<object>> PostImportResultsDbAsync(McqTestResults results) {
+            context.Database.EnsureCreated();
+
+            McqResultDb[] dbResults = new McqResultDb[results.McqTestResult.Length];
+
+            try {
+                for (int i = 0; i < results.McqTestResult.Length; i++) {
+                    dbResults[i] = results.McqTestResult[i].ToDatabaseData();
+                }
+            } catch {
+                return BadRequest(results);
             }
+
+            try {
+                context.Result.AddRange(dbResults);
+                await context.SaveChangesAsync();
+            } catch (Exception ex) {
+                return StatusCode(500, ex.Message);
+            }
+
+            return Ok(dbResults);
         }
     }
 }

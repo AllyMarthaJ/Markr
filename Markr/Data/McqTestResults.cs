@@ -8,8 +8,8 @@ using System.Xml.Serialization;
 namespace Markr.DataHandling.Data {
     [XmlRoot(ElementName = "mcq-test-results")]
     public class McqTestResults {
-        [XmlElement(ElementName = "mcq-test-result")]
 
+        [XmlElement(ElementName = "mcq-test-result")]
         public McqTestResult[] McqTestResult { get; set; }
     }
 }
