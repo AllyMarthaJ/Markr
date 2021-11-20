@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  markr:
+    image: ${DOCKER_REGISTRY-}markr
+    build:
+      context: .
+      dockerfile: Markr\Dockerfile
