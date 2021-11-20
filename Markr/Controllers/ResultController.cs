@@ -11,19 +11,20 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Markr.Controllers {
-    [Route("[controller]")]
+    [Route("")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public class ImportController : ControllerBase {
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public class ResultController : ControllerBase {
         private readonly StorageContext context;
 
-        public ImportController(StorageContext context) {
+        public ResultController(StorageContext context) {
             this.context = context;
         }
 
-        [HttpPost]
+        [HttpPost("import")]
         public async Task<ActionResult<object>> PostImportResultsDbAsync(McqTestResults results) {
             context.Database.EnsureCreated();
 
@@ -45,6 +46,17 @@ namespace Markr.Controllers {
             }
 
             return Ok(dbResults);
+        }
+
+        [HttpGet("{testId}/aggregate")]
+        public ActionResult<TestAggregate> GetTestAggregate(int testId) {
+            McqResultDb[] testResults = context.Result.Where(t => t.TestId == testId).ToArray();
+
+            if (testResults.Length == 0) {
+                return NotFound("No tests with that ID were found.");
+            }
+ 
+            return TestAggregate.FormatTest(testResults);
         }
     }
 }

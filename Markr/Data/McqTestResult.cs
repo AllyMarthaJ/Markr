@@ -12,7 +12,8 @@ namespace Markr.DataHandling.Data {
         public string LastName { get; set; }
 
         [XmlElement(ElementName = "student-number")]
-        public string StudentNumber { get; set; }
+        [DefaultValue(-1)]
+        public int StudentNumber { get; set; }
 
         [XmlElement(ElementName = "test-id")]
         public int TestId { get; set; }
@@ -32,8 +33,8 @@ namespace Markr.DataHandling.Data {
         internal McqResultDb ToDatabaseData() {
             if (String.IsNullOrEmpty(FirstName) ||
                 String.IsNullOrEmpty(LastName) ||
-                String.IsNullOrEmpty(StudentNumber) ||
                 TestId == -1 ||
+                StudentNumber == -1 ||
                 SummaryMarks.Available == -1 ||
                 SummaryMarks.Obtained == -1 ||
                 ScannedOn == default(DateTime)) {

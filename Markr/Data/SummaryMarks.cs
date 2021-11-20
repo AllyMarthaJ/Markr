@@ -12,10 +12,10 @@ namespace Markr.DataHandling.Data {
 
 		[XmlAttribute(AttributeName = "available")]
 		[DefaultValue(-1)]
-		public int Available { get; set; }
+		public double Available { get; set; }
 
 		[XmlAttribute(AttributeName = "obtained")]
 		[DefaultValue(-1)]
-		public int Obtained { get; set; }
+		public double Obtained { get; set; }
 	}
 }

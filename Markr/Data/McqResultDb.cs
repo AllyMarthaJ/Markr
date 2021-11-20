@@ -20,14 +20,14 @@ namespace Markr.DataHandling.Data {
         public string LastName { get; set; }
 
         [StringLength(10)]
-        public string StudentNumber { get; set; }
+        public int StudentNumber { get; set; }
 
         public int TestId { get; set; }
 
         //public DateTime ScannedOn { get; set; }
 
-        public int AvailableMarks { get; set; }
+        public double AvailableMarks { get; set; }
 
-        public int ObtainedMarks { get; set; }
+        public double ObtainedMarks { get; set; }
     }
 }
