@@ -26,10 +26,13 @@ namespace Markr.Controllers {
 
         [HttpPost("import")]
         public async Task<ActionResult<object>> PostImportResultsDbAsync(McqTestResults results) {
+            // Create db if not already.
             context.Database.EnsureCreated();
 
+            // Prepare to transform data.
             McqResultDb[] dbResults = new McqResultDb[results.McqTestResult.Length];
 
+            // Transform/translate data to database form.
             try {
                 for (int i = 0; i < results.McqTestResult.Length; i++) {
                     dbResults[i] = results.McqTestResult[i].ToDatabaseData();
@@ -38,6 +41,7 @@ namespace Markr.Controllers {
                 return BadRequest(results);
             }
 
+            // Attempt to save data to database.
             try {
                 context.Result.AddRange(dbResults);
                 await context.SaveChangesAsync();
@@ -45,17 +49,21 @@ namespace Markr.Controllers {
                 return StatusCode(500, ex.Message);
             }
 
-            return Ok(dbResults);
+            // If everything went well, return Ok with no body.
+            return Ok();
         }
 
         [HttpGet("{testId}/aggregate")]
         public ActionResult<TestAggregate> GetTestAggregate(int testId) {
+            // Fetch the test results with that ID.
             McqResultDb[] testResults = context.Result.Where(t => t.TestId == testId).ToArray();
 
+            // No results; 404.
             if (testResults.Length == 0) {
                 return NotFound("No tests with that ID were found.");
             }
  
+            // Format the test as aggregate; will filter data further.
             return TestAggregate.FormatTest(testResults);
         }
     }

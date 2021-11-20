@@ -30,7 +30,7 @@ namespace Markr.DataHandling.Data {
         [XmlText]
         public string Text { get; set; }
 
-        internal McqResultDb ToDatabaseData() {
+        public McqResultDb ToDatabaseData() {
             if (String.IsNullOrEmpty(FirstName) ||
                 String.IsNullOrEmpty(LastName) ||
                 TestId == -1 ||
