@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Markr.DataHandling.Storage;
+using Microsoft.EntityFrameworkCore;
 
 namespace Markr {
     public class Startup {
@@ -25,6 +27,9 @@ namespace Markr {
             var markrInputFormatter = new XmlSerializerInputFormatter(new MvcOptions());
             markrInputFormatter.SupportedMediaTypes.Add("text/xml+markr");
 
+            services.AddDbContext<StorageContext>(options => {
+                options.UseSqlite(Configuration.GetConnectionString("mConn"));
+            });
             services.AddControllers(options => {
                 options.InputFormatters.Add(markrInputFormatter);
             });
