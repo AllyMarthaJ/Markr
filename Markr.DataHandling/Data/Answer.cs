@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Markr.DataHandling {
-
+namespace Markr.DataHandling.Data {
 	[XmlRoot(ElementName = "answer")]
 	public class Answer {
 

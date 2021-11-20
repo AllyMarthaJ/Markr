@@ -1,4 +1,4 @@
-﻿using Markr.DataHandling;
+﻿using Markr.DataHandling.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,8 +20,8 @@ namespace Markr.Controllers {
         }
 
         [HttpPost]
-        public ActionResult PostImportData(McqTestResult result) {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(McqTestResult));
+        public ActionResult PostImportData(McqTestResults result) {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(McqTestResults));
             using (StringWriter textWriter = new StringWriter()) {
                 xmlSerializer.Serialize(textWriter, result);
                 return Ok(textWriter.ToString());

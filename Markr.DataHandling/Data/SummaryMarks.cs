@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Markr.DataHandling {
+namespace Markr.DataHandling.Data {
 	[XmlRoot(ElementName = "summary-marks")]
 	public class SummaryMarks {
 
