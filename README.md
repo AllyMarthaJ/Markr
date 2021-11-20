@@ -25,6 +25,8 @@ Furthermore, I had software issues with docker, windows, visual studio.
 Seriously I should just consider Linux at this point, like my benevolent girlfriend has been saying all along. 
 I estimate approximately 80% of my time was looking at documentation and examples.)
 
+All in all, ~4 hours spent on this task (3-5 hours given), most of which I spent on research time.
+
 # Installation/Running
 1. Install Docker by any means necessary (enslave a junior developer, if I might suggest).
 2. Download/pull this repo and open a terminal in the main directory with `docker-compose.yml`.
