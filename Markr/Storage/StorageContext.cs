@@ -11,5 +11,6 @@ namespace Markr.DataHandling.Storage {
         public DbSet<McqResultDb> Result { get; set; }
 
         public StorageContext() : base() { }
+        public StorageContext(DbContextOptions options) : base(options) { }
     }
 }
