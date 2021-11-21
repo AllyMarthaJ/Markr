@@ -27,8 +27,9 @@ I estimate approximately 80% of my time was looking at documentation and example
 
 All in all, ~4 hours spent on this task (3-5 hours given), most of which I spent on research time.
 
-# Installation/Running
+# Installation and Deployment
 1. Install Docker by any means necessary (enslave a junior developer, if I might suggest).
 2. Download/pull this repo and open a terminal in the main directory with `docker-compose.yml`.
 3. Run `docker-compose up`; wait for installation of .NET 6 to commence.
-4. A browser should open when complete to API documentation, as given in the spec. Follows OpenAPI via Swagger.
+4. A browser should open when complete to API documentation, as given in the spec. Follows OpenAPI via Swagger. If it doesn't, navigate to /swagger. 
+5. To take down the container, run `docker-compose down`. You can run the server without Docker by navigating to `/bin/debug` and executing `Markr.exe`; ports 5000 and 5001. Swagger will be disabled.
